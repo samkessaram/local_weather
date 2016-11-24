@@ -27,11 +27,34 @@ $(function(){
   }
 
   function pickIcon(icon){
-    console.log(sunUp());
+    var prefix;
+
     if (sunUp()){
-      console.log("Sun is shinin'");
+      prefix = 'wi-day-';
     } else {
-      console.log("Sun is down");
+      prefix = 'wi-night-';
+    }
+
+    var icons = {
+      chanceflurries: // your shortened icon class here
+      chancerain
+      chancesleat
+      chancesnow
+      chancetstorms
+      clear
+      cloudy
+      flurries
+      hazy
+      mostlycloudy
+      mostlysunny
+      partlycloudy
+      partlysunny
+      rain
+      sleat
+      snow
+      sunny
+      tstorms
+      unknown
     }
     
     
