@@ -4,7 +4,7 @@ $(function(){
   var forecast;
   var sunTimes;
   var celsius = true;
-  // var kph = true;
+  var kph = true;
   
   $.getJSON(wunderground, function(response){
     forecast = response.current_observation;
@@ -16,50 +16,73 @@ $(function(){
     $('#city').html(forecast.display_location.full);
     pickIcon(forecast.icon);
     $('#temperature').html(forecast.temp_c);
-    $('#feels-like').html(forecast.feelslike_c);
-    $('#conditions').html(forecast.icon);
-    $('#wind-chill').html(forecast.windchill_c);
-    $('#wind-speed').html(forecast.wind_kph);
-    $('#wind-gust').html(forecast.wind_gust_kph);
+    $('#feels-like-temperature').html(forecast.feelslike_c);
+    $('#conditions').html(upcase(forecast.icon));
+    $('#wind-speed-kph').html(forecast.wind_kph);
+    $('#wind-gust-kph').html(forecast.wind_gust_kph);
+    $('#wind-speed-mph').html(forecast.wind_mph);
+    $('#wind-gust-mph').html(forecast.wind_gust_mph);
     $('#wind-direction').html(forecast.wind_dir);
     $('#humidity').html(forecast.relative_humidity);
-    
   }
 
-  function pickIcon(icon){
-    var prefix;
+  function upcase(str){
+    str = str.split('');
+    str[0] = str[0].toUpperCase();
+    str = str.join('');
+    return str;
+  }
 
-    if (sunUp()){
+  function pickIcon(conditions){
+    var prefix;
+    var weatherIcon;
+    var dayTime = sunUp();
+
+    if (dayTime){
       prefix = 'wi-day-';
     } else {
-      prefix = 'wi-night-';
+      prefix = 'wi-night-'
     }
 
     var icons = {
-      chanceflurries: // your shortened icon class here
-      chancerain
-      chancesleat
-      chancesnow
-      chancetstorms
-      clear
-      cloudy
-      flurries
-      hazy
-      mostlycloudy
-      mostlysunny
-      partlycloudy
-      partlysunny
-      rain
-      sleat
-      snow
-      sunny
-      tstorms
-      unknown
+      chanceflurries: 'snow',
+      chancerain: 'showers',
+      chancesleat: 'sleet',
+      chancesnow: 'snow',
+      chancetstorms: 'storm-showers', 
+      cloudy: 'cloudy',
+      flurries: 'show',
+      hazy: 'fog',
+      fog: 'fog',
+      mostlysunny: 'sunny',
+      partlycloudy: 'cloudy-high',
+      partlysunny: 'cloudy',
+      rain: 'rain',
+      sleat: 'sleet',
+      snow: 'snow',
+      sunny: 'sunny',
+      tstorms: 'lightning',
+      unknown: 'cloudy-high'
+    }
+
+    switch(conditions){
+      case 'clear':
+        if (dayTime){
+          weatherIcon = prefix + 'sunny';
+        } else {
+          weatherIcon = 'wi-lunar-eclipse';
+        }
+        break;
+      case 'mostlycloudy':
+        weatherIcon = 'wi-cloudy';
+        break;
+      default:
+        weatherIcon = prefix + icons[conditions];
     }
     
-    
-    $('#icon').html('<i class="wi wi-' + icon + '"></i>');
-  }
+    $('#icon').addClass(weatherIcon);
+
+  };
 
   function sunUp(){
     var timeNow = new Date();
@@ -73,6 +96,22 @@ $(function(){
     sunset.setMinutes(sunTimes.sunset.minute);
     
     return timeNow > sunrise && timeNow < sunset;
-  }
+  };
+
+  $('#alt-temperature').click(function(){
+    if ( celsius ){
+      $('#temperature').html(forecast.temp_f);
+      $('#feels-like-temperature').html(forecast.feelslike_f);
+      $('.temperature-unit').html('&deg;F ');
+      $('#alt-temperature').html('| C');
+      celsius = false;
+    } else {
+      $('#temperature').html(forecast.temp_c);
+      $('#feels-like-temperature').html(forecast.feelslike_c);
+      $('.temperature-unit').html('&deg;C ');
+      $('#alt-temperature').html('| F');
+      celsius = true;
+    }
+  })
 
 });

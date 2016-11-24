@@ -1,0 +1,65 @@
+h3, p {
+  font-weight: 200;
+}
+
+#city, #icon {
+  margin: 50px 0px 20px;
+}
+
+#icon {
+  font-size: 120px;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
+#temperature {
+  font-size: 150px;
+  font-weight: 100;
+  margin-top: -40px;
+}
+
+#alt-temperature {
+  color: lightgray;
+}
+
+#alt-temperature:hover {
+  color: black;
+  cursor: pointer;
+}
+
+#feels-like {
+  position: relative;
+  top: -75px;
+  left: 10px;
+  margin-bottom: 30px;
+}
+
+#headline-temperature-unit {
+  position: relative;
+  top: -180px;
+  left: 180px;
+}
+
+#conditions {
+  margin-bottom: 40px;
+}
+
+.row {
+  margin-top: 40px;
+}
+
+#left-box {
+  margin-top: -35px;
+}
+
+#right-box {
+  margin-right: -10px;
+}
+
+#right-box p {
+  margin-bottom: 26px;
+}
+
+#center-box {
+  margin-bottom: -50px;
+}

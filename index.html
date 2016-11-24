@@ -13,22 +13,34 @@
 </head>
 <body>
 <div class="container">
-  
-<p id="city"></p>
-<p id="icon"></p>
-<p id="temp"></p>
-<p id="wind-speed"></p>
-<p id="wind-gust"></p>
-<p id="wind-direction"></p>
-<p id="wind-chill"></p>
-<p id="humidity"></p>
-<p id="conditions"></p>
+
+  <div class="row">
+    <h3 id="city" class="small-12 columns text-center"></h3>
+  </div>
+
+  <div class="row">
+    <div id="left-box" class="small-12 large-4 columns text-center">
+        <i id="icon" class="wi"></i>
+        <p id="conditions"></p>
+    </div>
+
+    <div id="center-box" class="small-12 large-4 columns text-center">
+        <h1 id="temperature"></h1>
+        <h3 id="headline-temperature-unit"><span class="temperature-unit">&deg;C </span><span id="alt-temperature">| F</span></h3>
+        <p id="feels-like">Feels like <span id="feels-like-temperature"></span><span class="temperature-unit">&deg;C</span></p>
+    </div>
 
 
 
+      <div id="right-box" class="small-12 large-4 columns text-center">
+        <p>Wind Direction: <span id="wind-direction"></span></p>
+        <p>Wind Speed: <span id="wind-speed-kph"></span> km/h | <span id="wind-speed-mph"></span> mph</p>
+        <p>Wind Gusts: <span id="wind-gust-kph"></span> km/h | <span id="wind-gust-mph"></span>mph</p>
+        <p>Humidity: <span id="humidity"></span></p>
+      </div>
 
 
-<i style="font-size:50px" class="wi wi-wu-hazy"></i>
+  </div>
 
 </div>
 </body>
