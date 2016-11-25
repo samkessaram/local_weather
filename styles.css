@@ -7,12 +7,14 @@ h1 {
   font-weight: 100;
 }
 
-#city, #icon {
-  margin: 45px 0px 20px;
+#city {
+  margin: 45px 0px 50px;
 }
 
 #icon {
-  font-size: 120px;
+  font-size: 170px;
+  margin-bottom: 5px;
+  margin-top: 3px;
 }
 
 #temperature {
@@ -20,7 +22,8 @@ h1 {
 
 #feels-like {
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  margin-top: 15px;
 }
 
 #headline-temperature-number {
@@ -44,7 +47,7 @@ h1 {
 }
 
 #conditions {
-  margin: 5px 0px 40px;
+  margin: 26px 0px 50px;
 }
 
 .row {
@@ -63,7 +66,7 @@ h1 {
 }
 
 #right-box p {
-  line-height: 2.14;
+  line-height: 2.44;
 }
 
 #center-box {
