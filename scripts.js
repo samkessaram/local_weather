@@ -6,11 +6,13 @@ $(function(){
   var celsius = true;
   var kph = true;
   
-  $.getJSON(wunderground, function(response){
-    forecast = response.current_observation;
-    sunTimes = response.moon_phase;
-    inputForecastData(forecast);
-  })
+  function getForecast(){
+    $.getJSON(wunderground, function(response){
+      forecast = response.current_observation;
+      sunTimes = response.moon_phase;
+      inputForecastData(forecast);
+    })
+  };
 
   function  inputForecastData(){
     $('#city').html(forecast.display_location.full);
@@ -37,20 +39,12 @@ $(function(){
     var prefix;
     var weatherIcon;
     var dayTime = sunUp();
-
-    if (dayTime){
-      prefix = 'wi-day-';
-    } else {
-      prefix = 'wi-night-'
-    }
-
     var icons = {
       chanceflurries: 'snow',
       chancerain: 'showers',
       chancesleat: 'sleet',
       chancesnow: 'snow',
       chancetstorms: 'storm-showers', 
-      cloudy: 'cloudy',
       flurries: 'show',
       hazy: 'fog',
       fog: 'fog',
@@ -65,6 +59,12 @@ $(function(){
       unknown: 'cloudy-high'
     }
 
+    if (dayTime){
+      prefix = 'wi-day-';
+    } else {
+      prefix = 'wi-night-'
+    }
+
     switch(conditions){
       case 'clear':
         if (dayTime){
@@ -73,6 +73,7 @@ $(function(){
           weatherIcon = 'wi-lunar-eclipse';
         }
         break;
+      case 'cloudy':
       case 'mostlycloudy':
         weatherIcon = 'wi-cloudy';
         break;
@@ -113,5 +114,7 @@ $(function(){
       celsius = true;
     }
   })
+
+  getForecast();
 
 });
