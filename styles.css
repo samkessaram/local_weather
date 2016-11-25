@@ -13,8 +13,7 @@ h1 {
 
 #icon {
   font-size: 170px;
-  margin-bottom: 5px;
-  margin-top: 3px;
+  margin-top: 35px;
 }
 
 #temperature {
@@ -32,7 +31,8 @@ h1 {
 }
 
 #headline-temperature-unit {
-  margin-top: -50px;
+  margin-top: -80px;
+  margin-bottom: 38px;
 }
 
 #alt-temperature {
@@ -47,7 +47,7 @@ h1 {
 }
 
 #conditions {
-  margin: 26px 0px 50px;
+  margin: 0px 0px 70px;
 }
 
 .row {
