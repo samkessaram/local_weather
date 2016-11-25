@@ -102,13 +102,13 @@ $(function(){
     if ( celsius ){
       $('#temperature').html(forecast.temp_f);
       $('#feels-like-temperature').html(forecast.feelslike_f);
-      $('.temperature-unit').html('&deg;F ');
+      $('.temperature-unit').html('F ');
       $('#alt-temperature').html('| C');
       celsius = false;
     } else {
       $('#temperature').html(forecast.temp_c);
       $('#feels-like-temperature').html(forecast.feelslike_c);
-      $('.temperature-unit').html('&deg;C ');
+      $('.temperature-unit').html('C ');
       $('#alt-temperature').html('| F');
       celsius = true;
     }
