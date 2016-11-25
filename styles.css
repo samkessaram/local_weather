@@ -3,13 +3,11 @@ h3, p {
 }
 
 #city, #icon {
-  margin: 50px 0px 20px;
+  margin: 45px 0px 20px;
 }
 
 #icon {
   font-size: 120px;
-  margin-bottom: 20px;
-  margin-top: 50px;
 }
 
 #temperature {
@@ -29,7 +27,7 @@ h3, p {
 
 #feels-like {
   position: relative;
-  top: -75px;
+  top: -74px;
   left: 10px;
   margin-bottom: 30px;
 }
@@ -41,7 +39,7 @@ h3, p {
 }
 
 #conditions {
-  margin-bottom: 40px;
+  margin: 5px 0px 30px;
 }
 
 .row {
@@ -50,14 +48,17 @@ h3, p {
 
 #left-box {
   margin-top: -35px;
+  position: relative;
+  right: -10px;
 }
 
 #right-box {
-  margin-right: -10px;
+  position: relative;
+  left: 60px;
 }
 
 #right-box p {
-  margin-bottom: 26px;
+  line-height: 2.14;
 }
 
 #center-box {
