@@ -1,3 +1,7 @@
+body {
+  display: none;
+}
+
 h3, p {
   font-weight: 200;
 }
@@ -40,12 +44,11 @@ h1 {
 #temperature-units {
   margin-top: -80px;
   margin-bottom: 38px;
-  color: lightgray;
+  color: gray;
 }
 
 #temperature-units:hover, .alt-temperature:hover {
   cursor: pointer;
-  color: black;
 }
 
 #fahrenheit {
@@ -54,17 +57,20 @@ h1 {
 }
 
 .current-temperature {
+}
+
+.day-color {
   color: black;
 }
 
-.alt-temperature {
-  color: lightgray;
+.night-color {
+  color: white;
 }
 
-/*.alt-temperature:hover {
-  color: lightgray;
+.alt-temperature {
+  color: gray;
 }
-*/
+
 .row {
   margin-top: 40px;
 }
