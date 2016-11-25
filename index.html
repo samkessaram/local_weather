@@ -9,10 +9,12 @@
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/1.0.1/trianglify.min.js"></script>
   <script type="text/javascript" src="scripts.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=0.5">
 </head>
 <body>
+<canvas id="canvas"></canvas>
 <div class="container">
   <div class="row">
     <h3 id="city" class="small-12 columns text-center"></h3>
@@ -29,9 +31,9 @@
     <div id="center-box" class="small-12 large-4 columns text-center">
       <div class="row">
         <div class="small-12 small-centered large-12 columns">
-          <h3 id="temperature-units">&deg;<span class="temperature-unit">C </span><span id="alt-temperature">| &deg;F</span></h3>
+          <h3 id="temperature-units"><span id="celsius" class="current-temperature">&deg;C</span> | <span id="fahrenheit" class="alt-temperature">&deg;F</span></h3>
           <h1 id="temperature"></h1>
-          <p id="feels-like">Feels like <span id="feels-like-temperature"></span>&deg;<span class="temperature-unit">C</span></p>
+          <p id="feels-like">Feels like <span id="feels-like-temperature"></span>&deg;<span id="temperature-unit">C</span></p>
         </div>
       </div>
     </div>

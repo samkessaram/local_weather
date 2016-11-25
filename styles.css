@@ -7,6 +7,15 @@ h1 {
   font-weight: 100;
 }
 
+#canvas {
+  position:fixed;
+  top:0;
+  left: 0;
+  height: 100%
+  width: 100%;
+  z-index: -1;
+}
+
 #city {
   margin: 45px 0px 50px;
 }
@@ -31,19 +40,31 @@ h1 {
 #temperature-units {
   margin-top: -80px;
   margin-bottom: 38px;
+  color: lightgray;
 }
 
-#alt-temperature {
-  color: lightgray;
+#temperature-units:hover, .alt-temperature:hover {
+  cursor: pointer;
+  color: black;
+}
+
+#fahrenheit {
   position: relative;
   z-index: 1;
 }
 
-#alt-temperature:hover {
+.current-temperature {
   color: black;
-  cursor: pointer;
 }
 
+.alt-temperature {
+  color: lightgray;
+}
+
+/*.alt-temperature:hover {
+  color: lightgray;
+}
+*/
 .row {
   margin-top: 40px;
 }

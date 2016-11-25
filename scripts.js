@@ -11,12 +11,12 @@ $(function(){
       forecast = response.current_observation;
       sunTimes = response.moon_phase;
       inputForecastData(forecast);
+      pickIcon(forecast.icon);
     })
   };
 
   function  inputForecastData(){
     $('#city').html(forecast.display_location.full);
-    pickIcon(forecast.icon);
     $('#temperature').html(forecast.temp_c);
     $('#feels-like-temperature').html(forecast.feelslike_c);
     $('#conditions').html(upcase(forecast.icon));
@@ -35,17 +35,34 @@ $(function(){
     return str;
   }
 
+  function setBackground(icon, daylight){
+    var cellSize;
+    var xColors = ['#000000','#92C4FF','#22527F','#5977FF','#26317F','#000000'];
+    var yColors;
+    var pattern = Trianglify({
+      width: window.innerWidth,
+      height: window.innerHeight,
+      cell_size: 40,
+      variance: 0.2,
+      x_colors: xColors,
+      y_colors: 'match_x',
+      stroke_width: 1.51
+    })
+
+    pattern.canvas(document.getElementById('canvas'));
+  }
+
   function pickIcon(conditions){
     var prefix;
     var weatherIcon;
-    var dayTime = sunUp();
+    var daylight = sunUp();
     var icons = {
       chanceflurries: 'snow',
       chancerain: 'showers',
       chancesleat: 'sleet',
       chancesnow: 'snow',
       chancetstorms: 'storm-showers', 
-      flurries: 'show',
+      flurries: 'snow',
       hazy: 'fog',
       fog: 'fog',
       mostlysunny: 'sunny',
@@ -59,7 +76,7 @@ $(function(){
       unknown: 'cloudy-high'
     }
 
-    if (dayTime){
+    if (daylight){
       prefix = 'wi-day-';
     } else {
       prefix = 'wi-night-'
@@ -67,7 +84,7 @@ $(function(){
 
     switch(conditions){
       case 'clear':
-        if (dayTime){
+        if (daylight){
           weatherIcon = prefix + 'sunny';
         } else {
           weatherIcon = 'wi-lunar-eclipse';
@@ -82,7 +99,7 @@ $(function(){
     }
     
     $('#icon').addClass(weatherIcon);
-
+    // setBackground(weatherIcon, daylight);
   };
 
   function sunUp(){
@@ -99,22 +116,31 @@ $(function(){
     return timeNow > sunrise && timeNow < sunset;
   };
 
-  $('#alt-temperature').click(function(){
+  $('#temperature-units').click(function changeUnits(){
     if ( celsius ){
       $('#temperature').html(forecast.temp_f);
       $('#feels-like-temperature').html(forecast.feelslike_f);
-      $('.temperature-unit').html('F ');
-      $('#alt-temperature').html('| &deg;C');
+      $('#temperature-unit').html('F');
+      $('#fahrenheit').addClass('current-temperature');
+      $('#celsius').removeClass('current-temperature');
+      $('#celsius').addClass('alt-temperature');
+      $('#fahrenheit').removeClass('alt-temperature');
+
       celsius = false;
     } else {
       $('#temperature').html(forecast.temp_c);
       $('#feels-like-temperature').html(forecast.feelslike_c);
-      $('.temperature-unit').html('C ');
-      $('#alt-temperature').html('| &deg;F');
+      $('#temperature-unit').html('C');
+      $('#fahrenheit').addClass('alt-temperature');
+      $('#celsius').removeClass('alt-temperature');
+      $('#celsius').addClass('current-temperature');
+      $('#fahrenheit').removeClass('current-temperature');
+
       celsius = true;
     }
   })
 
   getForecast();
+  // setBackground();
 
 });
