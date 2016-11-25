@@ -14,9 +14,7 @@ h1 {
 #icon {
   font-size: 170px;
   margin-top: 35px;
-}
-
-#temperature {
+  margin-bottom: 70px;
 }
 
 #feels-like {
@@ -46,10 +44,6 @@ h1 {
   cursor: pointer;
 }
 
-#conditions {
-  margin: 0px 0px 70px;
-}
-
 .row {
   margin-top: 40px;
 }
@@ -66,7 +60,7 @@ h1 {
 }
 
 #right-box p {
-  line-height: 2.44;
+  line-height: 1.7;
 }
 
 #center-box {
