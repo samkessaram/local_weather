@@ -95,7 +95,7 @@ $(function(){
       width: window.innerWidth,
       height: window.innerHeight,
       cell_size: 200,
-      x_colors: storm,
+      x_colors: xColors,
       y_colors: yColors
     })
 
