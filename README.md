@@ -1,4 +1,4 @@
-# local_weather
+# weather
 
 Second intermediate front end development project from Free Code Camp. Because the world can never have too many weather websites!
 
