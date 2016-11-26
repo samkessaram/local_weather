@@ -67,14 +67,13 @@ function setBackground(conditions,sun){
   $('body').show();
 }
 
-$(window).on("orientationchange",function(){
+$(window).on("resize",function(){
   var pattern = Trianglify({
     width: window.innerWidth,
     height: window.innerHeight,
     cell_size: 200,
     x_colors: xColors,
     y_colors: yColors
-  })
-
+  });
   pattern.canvas(document.getElementById('canvas'));
 });
