@@ -67,20 +67,6 @@ function setBackground(conditions,sun){
   $('body').show();
 }
 
-
-var previousOrientation = window.orientation;
-var checkOrientation = function(){
-    if(window.orientation !== previousOrientation){
-        previousOrientation = window.orientation;
-        console.log('orientation changed!');
-        // orientation changed, do your magic here
-    }
-};
-
-window.addEventListener("resize", checkOrientation, false);
-window.addEventListener("orientationchange", checkOrientation, false);
-
-
 $(window).on("orientationchange resize",function(){
   var pattern = Trianglify({
     width: window.innerWidth,
