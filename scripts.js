@@ -1,13 +1,13 @@
 $(function(){
 
-  var wunderground = 'https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/conditions/astronomy/q/autoip.json'
+  var localURL = 'https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/conditions/astronomy/q/autoip.json'
   var forecast;
   var sunTimes;
   var celsius = true;
   var kph = true;
   
-  function getLocalForecast(){
-    $.getJSON(wunderground, function(response){
+  function getForecast(url){
+    $.getJSON(url, function(response){
       forecast = response.current_observation;
       sunTimes = response.moon_phase;
       inputForecastData();
@@ -211,6 +211,6 @@ $(function(){
     }
   })
 
-  getLocalForecast();
+  getForecast(localURL);
 
 });
