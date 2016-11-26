@@ -41,8 +41,6 @@ $(function(){
 
     setIcon(conditions,sun);
     setBackground(conditions,sun);
-
-  
   };
 
   $('#temperature-units').click(function changeUnits(){

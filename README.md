@@ -1,9 +1,11 @@
 # local_weather
 
-Second intermediate front end development project from Free Code Camp. Because the world can never have enough weather websites...
+Second intermediate front end development project from Free Code Camp. Because the world can never have too many weather websites!
 
 ### What It Does
-Using the [Weather Underground API](https://www.wunderground.com/weather/api/), we determine the user's location and current weather conditions. These are then displayed with an accompanying icon, which changes according to a) the weather, and b) whether or not it's daylight. The user can toggle between C and F. 
+Using the [Weather Underground API](https://www.wunderground.com/weather/api/), we determine the user's location and current weather conditions, which are displayed on the page. The user can toggle between C and F. 
+
+Both the background (generated with [Trianglify](https://github.com/qrohlf/Trianglify)) and a weather icon change according to a) the weather, and b) whether or not the sun has set.  
 
 ### Built With
 * HTML/CSS/Javascript
@@ -11,3 +13,4 @@ Using the [Weather Underground API](https://www.wunderground.com/weather/api/), 
 * jQuery
 * [Weather Underground API](https://www.wunderground.com/weather/api/)
 * [Weather Icons](https://github.com/erikflowers/weather-icons/) by [Erik Flowers](https://github.com/erikflowers)
+* [Trianglify](https://github.com/qrohlf/Trianglify) by [Quinn Rohlf](https://github.com/qrohlf)
