@@ -67,7 +67,7 @@ function setBackground(conditions,sun){
   $('body').show();
 }
 
-$(window).on("resize",function(){
+$(window).on("orientationchange resize",function(){
   var pattern = Trianglify({
     width: window.innerWidth,
     height: window.innerHeight,
