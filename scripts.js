@@ -11,7 +11,7 @@ $(function(){
       forecast = response.current_observation;
       sunTimes = response.moon_phase;
       inputForecastData(forecast);
-      pickIcon(forecast.icon);
+      setIcon(forecast.icon);
     })
   };
 
@@ -19,20 +19,13 @@ $(function(){
     $('#city').html(forecast.display_location.full);
     $('#temperature').html(forecast.temp_c);
     $('#feels-like-temperature').html(forecast.feelslike_c);
-    $('#conditions').html(upcase(forecast.icon));
+    $('#conditions').html(parseConditions(forecast.icon));
     $('#wind-speed-kph').html(forecast.wind_kph);
     $('#wind-gust-kph').html(forecast.wind_gust_kph);
     $('#wind-speed-mph').html(forecast.wind_mph);
     $('#wind-gust-mph').html(forecast.wind_gust_mph);
     $('#wind-direction').html(forecast.wind_dir);
     $('#humidity').html(forecast.relative_humidity);
-  }
-
-  function upcase(str){
-    str = str.split('');
-    str[0] = str[0].toUpperCase();
-    str = str.join('');
-    return str;
   }
 
   function setBackground(conditions, daylight){
@@ -103,7 +96,37 @@ $(function(){
     $('body').show();
   }
 
-  function pickIcon(conditions){
+  function parseConditions(str){
+    if (str.length > 8){
+      str = str.split('');
+      str.splice(6,0,' ');
+      str = str.join('');
+    }
+
+    if (str.includes('tstorms')){
+      str.replace('tstorms','thunderstorms')
+    }
+
+    if (str.includes('chance')){
+      str.replace('chance','chance of')
+    }
+
+    if (str.includes('sleat')){
+      str.replace('sleat','sleet')
+    }
+
+    return upcase(str);
+  }
+
+
+  function upcase(str){
+    str = str.split('');
+    str[0] = str[0].toUpperCase();
+    str = str.join('');
+    return str;
+  }
+
+  function setIcon(conditions){
     var prefix;
     var weatherIcon;
     var daylight = sunUp();
