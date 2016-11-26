@@ -6,7 +6,7 @@ $(function(){
   var celsius = true;
   var kph = true;
   
-  function getForecast(){
+  function getLocalForecast(){
     $.getJSON(wunderground, function(response){
       forecast = response.current_observation;
       sunTimes = response.moon_phase;
@@ -211,6 +211,6 @@ $(function(){
     }
   })
 
-  getForecast();
+  getLocalForecast();
 
 });
