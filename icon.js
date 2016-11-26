@@ -1,47 +1,58 @@
   function setIcon(conditions,sun){
-    var prefix;
     var weatherIcon;
-    var icons = {
-      partlysunny: 'cloudy',
-      partlycloudy: 'cloudy-high',
-      unknown: 'cloudy-high',
-      hazy: 'fog',
-      fog: 'fog',
-      tstorms: 'lightning',
-      rain: 'rain',
-      chancerain: 'showers',
-      chancesnow: 'snow',
-      chanceflurries: 'snow',
-      flurries: 'snow',
-      snow: 'snow',
-      sleat: 'sleet',
-      chancesleat: 'sleet',
-      chancetstorms: 'storm-showers', 
-      mostlysunny: 'sunny',
-      sunny: 'sunny'
-    }
 
     if (sun){
-      prefix = 'wi-day-';
+      weatherIcon = 'wi-day-';
     } else {
-      prefix = 'wi-night-'
+      weatherIcon = 'wi-night-'
     }
 
     switch(conditions){
       case 'clear':
         if (sun){
-          weatherIcon = prefix + 'sunny';
+          weatherIcon += 'sunny';
         } else {
           weatherIcon = 'wi-lunar-eclipse';
         }
         break;
-      case '':
-      case 'cloudy':
-      case 'mostlycloudy':
-        weatherIcon = 'wi-cloudy';
+      case 'partlysunny':
+        weatherIcon += 'cloudy';
         break;
+      case 'partlycloudy':
+      case 'unknown':
+        weatherIcon += 'cloudy-high';
+        break;
+      case 'hazy':
+      case 'fog':
+        weatherIcon += 'fog';
+        break;
+      case 'tstorms':
+        weatherIcon += 'lightning';
+        break;
+      case 'rain':
+        weatherIcon += 'rain';
+        break;
+      case 'chancerain':
+        weatherIcon += 'showers';
+      case 'chancesnow':
+      case 'chanceflurries':
+      case 'flurries':
+      case 'snow':
+        weatherIcon += 'snow';
+        break;
+      case 'sleat':
+      case 'chancesleat':
+        weatherIcon += 'sleet';
+        break;
+      case 'chancetstorms':
+        weatherIcon += 'storm-showers';
+        break;
+      case 'mostlysunny':
+      case 'sunny':
+        weatherIcon += 'sunny';
+        break;      
       default:
-        weatherIcon = prefix + icons[conditions];
+        weatherIcon = 'wi-cloudy';
     }
     
     $('#icon').addClass(weatherIcon);
