@@ -1,4 +1,4 @@
-  function setBackground(conditions, daylight){
+  function setBackground(conditions,sun){
     var xColors;
     var yColors;
     var day = ['#ACF0F2','#F3FFE2','#FFFFFF'];
@@ -11,7 +11,7 @@
     var cloudy = ['#263248','#D1DBBD','#7E8AA2','#263248'];
     var partlycloudy = ['#F3E565','#7E8AA2']
 
-    if(daylight){
+    if(sun){
       yColors = day;
       $('#celsius').addClass('day-color');
       $('#fahrenheit').addClass('day-color');

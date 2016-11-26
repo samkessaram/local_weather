@@ -1,7 +1,6 @@
-  function setIcon(conditions){
+  function setIcon(conditions,sun){
     var prefix;
     var weatherIcon;
-    var daylight = sunUp();
     var icons = {
       partlysunny: 'cloudy',
       partlycloudy: 'cloudy-high',
@@ -22,17 +21,15 @@
       sunny: 'sunny'
     }
 
-    if (daylight){
+    if (sun){
       prefix = 'wi-day-';
     } else {
       prefix = 'wi-night-'
     }
 
-    setBackground(conditions, daylight);
-
     switch(conditions){
       case 'clear':
-        if (daylight){
+        if (sun){
           weatherIcon = prefix + 'sunny';
         } else {
           weatherIcon = 'wi-lunar-eclipse';
@@ -47,18 +44,4 @@
     }
     
     $('#icon').addClass(weatherIcon);
-  };
-
-  function sunUp(){
-    var timeNow = new Date();
-    var sunrise = new Date();
-    var sunset = new Date();
-    
-    sunrise.setHours(sunTimes.sunrise.hour);
-    sunrise.setMinutes(sunTimes.sunrise.minute);
-    
-    sunset.setHours(sunTimes.sunset.hour);
-    sunset.setMinutes(sunTimes.sunset.minute);
-    
-    return timeNow > sunrise && timeNow < sunset;
   };
