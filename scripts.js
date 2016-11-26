@@ -8,7 +8,6 @@ $(function(){
   function getForecast(url){
     $.getJSON(url, function(response){
       forecast = response.current_observation;
-      console.log(forecast);
       inputForecastData(forecast);
       checkSunUp(response.current_observation.icon,response.moon_phase);
     })
