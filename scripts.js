@@ -173,8 +173,6 @@ $(function(){
       $('#temperature').html(forecast.temp_f);
       $('#feels-like-temperature').html(forecast.feelslike_f);
       $('#temperature-unit').html('F');
-      $('#fahrenheit').addClass('current-temperature');
-      $('#celsius').removeClass('current-temperature');
       $('#celsius').addClass('alt-temperature');
       $('#fahrenheit').removeClass('alt-temperature');
 
@@ -185,8 +183,6 @@ $(function(){
       $('#temperature-unit').html('C');
       $('#fahrenheit').addClass('alt-temperature');
       $('#celsius').removeClass('alt-temperature');
-      $('#celsius').addClass('current-temperature');
-      $('#fahrenheit').removeClass('current-temperature');
 
       celsius = true;
     }
