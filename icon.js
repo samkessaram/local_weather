@@ -35,6 +35,7 @@
           weatherIcon = 'wi-lunar-eclipse';
         }
         break;
+      case '':
       case 'cloudy':
       case 'mostlycloudy':
         weatherIcon = 'wi-cloudy';
