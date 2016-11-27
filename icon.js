@@ -18,9 +18,6 @@
       case 'partlysunny':
         weatherIcon += 'cloudy';
         break;
-      case 'partlycloudy':
-      case 'unknown':
-        weatherIcon += 'cloudy-high';
         break;
       case 'hazy':
       case 'fog':
@@ -51,8 +48,14 @@
       case 'sunny':
         weatherIcon += 'sunny';
         break;      
-      default:
+      case 'cloudy':
+      case 'mostlycloudy':
         weatherIcon = 'wi-cloudy';
+        break;
+      case 'partlycloudy':
+      case 'unknown':
+      default:
+        weatherIcon += 'cloudy-high';
     }
     
     $('#icon').addClass(weatherIcon);
