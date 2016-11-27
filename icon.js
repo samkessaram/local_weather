@@ -1,4 +1,4 @@
-  function setIcon(conditions,sun){
+  function setIcon(weather,sun){
     var weatherIcon;
 
     if (sun){
@@ -7,7 +7,7 @@
       weatherIcon = 'wi-night-'
     }
 
-    switch(conditions){
+    switch(weather){
       case 'clear':
         if (sun){
           weatherIcon += 'sunny';
@@ -17,7 +17,6 @@
         break;
       case 'partlysunny':
         weatherIcon += 'cloudy';
-        break;
         break;
       case 'hazy':
       case 'fog':

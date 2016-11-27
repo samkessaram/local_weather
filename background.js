@@ -1,7 +1,7 @@
 var xColors;
 var yColors;
 
-function setBackground(conditions,sun){
+function setBackground(weather,sun){
   var day = ['#ACF0F2','#F3FFE2','#FFFFFF'];
   var night = ['#130523','#090658','#0040A4'];
 
@@ -23,7 +23,7 @@ function setBackground(conditions,sun){
     $('#fahrenheit').addClass('night-color');
   }
 
-  switch(conditions){
+  switch(weather){
     case 'sunny':
     case 'mostlysunny':
     case 'clear':

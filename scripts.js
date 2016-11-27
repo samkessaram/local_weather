@@ -9,7 +9,7 @@ $(function(){
     $.getJSON(url, function(response){
       forecast = response.current_observation;
       inputForecastData(forecast);
-      checkSunUp(response.current_observation.icon,response.moon_phase);
+      checkSunUp(response.moon_phase);
     })
   };
 
@@ -26,7 +26,7 @@ $(function(){
     $('#humidity').html(forecast.relative_humidity);
   }
 
-  function checkSunUp(conditions,sunTimes){
+  function checkSunUp(sunTimes){
     var timeNow = new Date();
     var sunrise = new Date();
     var sunset = new Date();
@@ -39,8 +39,8 @@ $(function(){
 
     var sun = timeNow > sunrise && timeNow < sunset;
 
-    setIcon(conditions,sun);
-    setBackground(conditions,sun);
+    setIcon(forecast.icon,sun);
+    setBackground(forecast.icon,sun);
   };
 
   $('#temperature-units').click(function changeUnits(){
