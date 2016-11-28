@@ -1,6 +1,6 @@
 # local_weather
 
-Second intermediate front end development project from Free Code Camp. Because the world can never have too many weather websites!
+Because the world can never have too many weather websites!
 
 ### What It Does
 Using the [Weather Underground API](https://www.wunderground.com/weather/api/), we determine the user's location and current weather conditions, which are displayed on the page. The user can toggle between C and F. 
