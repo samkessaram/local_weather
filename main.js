@@ -43,21 +43,16 @@ $(function(){
   };
 
   $('#temperature-units').click(function changeUnits(){
+    $('#celsius, #fahrenheit').toggleClass('alt-temperature');
     if ( celsius ){
       $('#temperature').html(forecast.temp_f);
       $('#feels-like-temperature').html(forecast.feelslike_f);
       $('#temperature-unit').html('F');
-      $('#celsius').addClass('alt-temperature');
-      $('#fahrenheit').removeClass('alt-temperature');
-
       celsius = false;
     } else {
       $('#temperature').html(forecast.temp_c);
       $('#feels-like-temperature').html(forecast.feelslike_c);
       $('#temperature-unit').html('C');
-      $('#fahrenheit').addClass('alt-temperature');
-      $('#celsius').removeClass('alt-temperature');
-
       celsius = true;
     }
   })
