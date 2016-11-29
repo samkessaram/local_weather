@@ -1,33 +1,43 @@
 html,body {
-  width: 100%;
   height: 100%;
   margin: 0px;
-  padding: 0px;
   overflow-x: hidden; 
+  padding: 0px;
+  width: 100%;
 }
 
 body {
-  display: none;
+  display: none;     /* To hide uglyness while Javascript works */
 }
 
 h3, p {
   font-weight: 200;
 }
 
-h1 {
-  font-size: 150px;
-  font-weight: 100;
-}
-
 #canvas {
   position:fixed;
-  top:0;
-  left: 0;
   z-index: -1;
+}
+
+#center-box {
+  margin-bottom: -50px;
+}
+
+#conditions-box {
+  display:inline-block;
+  text-align:left;
 }
 
 #city {
   margin: 45px 0px 10px;
+}
+
+#fahrenheit {
+  z-index: 1;
+}
+
+#feels-like {
+  margin: 15px 0px 40px;
 }
 
 #icon {
@@ -35,20 +45,19 @@ h1 {
   margin-bottom: 70px;
 }
 
-#feels-like {
-  position: relative;
-  margin-bottom: 40px;
-  margin-top: 15px;
+#right-box p {
+  line-height: 1.5;
 }
 
 #temperature {
-  margin: -30px 0px -35px -20px
+  font-size: 150px;
+  font-weight: 100;
+  margin: -30px 0px -35px -20px;
 }
 
 #temperature-units {
-  margin-top: -80px;
-  margin-bottom: 38px;
-  color: lightgray;
+  color: gray;
+  margin: -80px 0px 38px;
 }
 
 #temperature-units:hover {
@@ -59,9 +68,12 @@ h1 {
   color: #484646;
 }
 
-#fahrenheit {
-  position: relative;
-  z-index: 1;
+.alt-temperature.day-color {
+  color: gray;
+}
+
+.alt-temperature.night-color {
+  color: #484646;
 }
 
 .day-color {
@@ -72,27 +84,7 @@ h1 {
   color: white;
 }
 
-.alt-temperature {
-  color: lightgray;
-}
-
-.alt-temperature.night-color {
-  color: #484646;
-}
-
 .row {
   margin-top: 40px;
 }
 
-#right-box p {
-  line-height: 1.5;
-}
-
-#center-box {
-  margin-bottom: -50px;
-}
-
-#conditions-box {
-  text-align:left;
-  display:inline-block;
-}

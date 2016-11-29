@@ -53,6 +53,8 @@
         break;
       case 'partlycloudy':
       case 'unknown':
+        weatherIcon = 'wi-na';
+        break;
       default:
         weatherIcon += 'cloudy-high';
     }
