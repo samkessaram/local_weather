@@ -38,8 +38,8 @@ $(function(){
 
     var sun = timeNow > sunrise && timeNow < sunset;  // Checking if sun is up or not (true or false) 
                                                       // to determine which icon and background to display.
-    setIcon(forecast.icon,sun);
-    setBackground(forecast.icon,sun);
+    setIcon(forecast.icon, sun);
+    setBackground(forecast.icon, sun);
   };
 
   $('#temperature-units').click(function changeUnits(){
