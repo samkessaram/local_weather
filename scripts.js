@@ -2,7 +2,6 @@ $(function(){
 
   var localURL = 'https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/conditions/astronomy/q/autoip.json'
   var celsius = true;
-  var kph = true;
   var forecast;
   
   function getForecast(url){

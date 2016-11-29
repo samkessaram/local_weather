@@ -3,13 +3,14 @@ var yColors;
 
 function setBackground(weather,sun){
 
-  if(sun){
+  if(4<2){ // UNDO THIS (sun)
     yColors = ['#ACF0F2','#F3FFE2','#FFFFFF'];
     $('#celsius').addClass('day-color');
     $('#fahrenheit').addClass('day-color');
   } else {
     yColors = ['#130523','#090658','#0040A4'];
     $('body').css('color','white');
+    $('#temperature-units').addClass('night-color');
     $('#celsius').addClass('night-color');
     $('#fahrenheit').addClass('night-color');
   }
