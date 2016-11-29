@@ -15,7 +15,7 @@ h3, p {
 }
 
 h1 {
-  font-size: 200px;
+  font-size: 150px;
   font-weight: 100;
 }
 
@@ -42,8 +42,7 @@ h1 {
 }
 
 #temperature {
-  margin-top: -70px;
-  margin-bottom: -56px;
+  margin: -30px 0px -35px -20px
 }
 
 #temperature-units {
