@@ -92,3 +92,8 @@ h1 {
 #center-box {
   margin-bottom: -50px;
 }
+
+#conditions-box {
+  text-align:left;
+  display:inline-block;
+}

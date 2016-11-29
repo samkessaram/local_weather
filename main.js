@@ -36,8 +36,8 @@ $(function(){
     sunset.setHours(sunTimes.sunset.hour);
     sunset.setMinutes(sunTimes.sunset.minute);
 
-    var sun = timeNow > sunrise && timeNow < sunset;
-
+    var sun = timeNow > sunrise && timeNow < sunset;  // Checking if sun is up or not (true or false) 
+                                                      // to determine which icon and background to display.
     setIcon(forecast.icon,sun);
     setBackground(forecast.icon,sun);
   };
