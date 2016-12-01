@@ -26,7 +26,7 @@ function upcase(str){
   if ( str[0] ){
     str[0] = str[0].toUpperCase();
   } else {
-    return 'Unknown';         // For the case of unknown conditons.
+    return '-';         // For the case of unknown conditons.
   }
   str = str.join('');
   return str;
