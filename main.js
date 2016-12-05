@@ -9,7 +9,7 @@ $(function(){
       forecast = response.current_observation;
       inputForecastData(forecast);
       checkSunUp(response.moon_phase);
-      console.log(forecast.icon);
+      console.log(forecast);
     })
   };
 
