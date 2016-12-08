@@ -51,10 +51,10 @@
       case 'mostlycloudy':
         weatherIcon = 'wi-cloudy';
         break;
-      case 'partlycloudy':
       case 'unknown':
         weatherIcon = 'wi-na';
         break;
+      case 'partlycloudy':
       default:
         weatherIcon += 'cloudy-high';
     }
