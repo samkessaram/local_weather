@@ -1,4 +1,4 @@
-  function setIcon(weather,sun){
+  function chooseIcon(weather,sun){
     var weatherIcon;
 
     if (sun){
@@ -30,6 +30,7 @@
         break;
       case 'chancerain':
         weatherIcon += 'showers';
+        break;
       case 'chancesnow':
       case 'chanceflurries':
       case 'flurries':
@@ -58,6 +59,11 @@
       default:
         weatherIcon += 'cloudy-high';
     }
+
+    return weatherIcon;
     
-    $('#icon').addClass(weatherIcon);
   };
+
+function setIcon(weather,sun){
+  $('#icon').addClass(chooseIcon(weather,sun));
+}
