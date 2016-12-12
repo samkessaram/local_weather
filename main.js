@@ -1,29 +1,29 @@
 $(function(){
 
-  var localURL = 'https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/conditions/astronomy/q/autoip.json'
+  var localURL = 'https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast/conditions/astronomy/q/autoip.json'
   var celsius = true;
-  var forecast;
+  var current;
   
   function getForecast(url){
     $.getJSON(url, function(response){
-      forecast = response.current_observation;
-      inputForecastData(forecast);
+      current = response.current_observation;
+      inputCurrentData(current);
       checkSunUp(response.moon_phase);
-      console.log(forecast);
+      inputForecast(response.forecast.simpleforecast.forecastday);
     })
   };
 
-  function  inputForecastData(forecast){
-    $('#city').html(forecast.display_location.full);
-    $('#temperature').html(forecast.temp_c);
-    $('#feels-like-temperature').html(forecast.feelslike_c);
-    $('#conditions').html(parseConditions(forecast.icon));
-    $('#wind-speed-kph').html(forecast.wind_kph);
-    $('#wind-gust-kph').html(forecast.wind_gust_kph);
-    $('#wind-speed-mph').html(forecast.wind_mph);
-    $('#wind-gust-mph').html(forecast.wind_gust_mph);
-    $('#wind-direction').html(forecast.wind_dir);
-    $('#humidity').html(forecast.relative_humidity);
+  function  inputCurrentData(){
+    $('#city').html(current.display_location.full);
+    $('#temperature').html(current.temp_c);
+    $('#feels-like-temperature').html(current.feelslike_c);
+    $('#conditions').html(parseConditions(current.icon));
+    $('#wind-speed-kph').html(current.wind_kph);
+    $('#wind-gust-kph').html(current.wind_gust_kph);
+    $('#wind-speed-mph').html(current.wind_mph);
+    $('#wind-gust-mph').html(current.wind_gust_mph);
+    $('#wind-direction').html(current.wind_dir);
+    $('#humidity').html(current.relative_humidity);
   }
 
   function checkSunUp(sunTimes){
@@ -39,20 +39,20 @@ $(function(){
 
     var sun = timeNow > sunrise && timeNow < sunset;  // Checking if sun is up or not (true or false) 
                                                       // to determine which icon and background to display.
-    setIcon(forecast.icon, sun);
-    setBackground(forecast.icon, sun);
+    setIcon(current.icon, sun);
+    setBackground(current.icon, sun);
   };
 
   $('#temperature-units').click(function changeUnits(){
     $('#celsius, #fahrenheit').toggleClass('alt-temperature');
     if ( celsius ){
-      $('#temperature').html(forecast.temp_f);
-      $('#feels-like-temperature').html(forecast.feelslike_f);
+      $('#temperature').html(current.temp_f);
+      $('#feels-like-temperature').html(current.feelslike_f);
       $('#temperature-unit').html('F');
       celsius = false;
     } else {
-      $('#temperature').html(forecast.temp_c);
-      $('#feels-like-temperature').html(forecast.feelslike_c);
+      $('#temperature').html(current.temp_c);
+      $('#feels-like-temperature').html(current.feelslike_c);
       $('#temperature-unit').html('C');
       celsius = true;
     }
