@@ -19,6 +19,14 @@ h3, p {
   z-index: -1;
 }
 
+.forecast i {
+  font-size: 80px;
+}
+
+.forecast {
+  margin-bottom: 25px;
+}
+
 #center-box {
   margin-bottom: -50px;
 }
