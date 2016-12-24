@@ -8,7 +8,7 @@ function setBackground(weather,sun){
     $('#celsius, #fahrenheit').addClass('day-color');
   } else {
     yColors = ['#130523','#090658','#0040A4'];
-    $('body, #temperature-units, #celsius, #fahrenheit').addClass('night-color');
+    $('body, #temperature-units, #celsius, #fahrenheit, .callout').addClass('night-color');
   }
 
   switch(weather){

@@ -15,17 +15,16 @@
   <script type="text/javascript" src="icon.js" async></script>
   <script type="text/javascript" src="grammar.js" async></script>  
   <script type="text/javascript" src="forecast.js" async></script>  
-
-
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 </head>
 <body>
 <canvas id="canvas"></canvas>
 <div class="container">
-  <div class="row">
-    <h3 id="city" class="small-12 columns text-center"></h3>
+  <div id="header" class="row">
+    <div class="small-12 text-center">
+      <h3 id="city"></h3>
+    </div>
   </div>
-
   <div class="row">
     <div id="left-box" class="small-12 large-4 columns text-center">
       <div class="row">
@@ -59,9 +58,9 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="small-12 small-centered columns">
+  <div class="callout">
+    <div class="small-12 columns text-center"><h4>3-Day Forecast</h4></div>
+    <div class="small-12 large-8 small-centered columns">
       <div class="row text-center">
         <div id="day-1" class="forecast small-12 large-4 columns"></div>
         <div id="day-2" class="forecast small-12 large-4 columns"></div>

@@ -14,6 +14,7 @@ $(function(){
   };
 
   function  inputCurrentData(){
+    var date = new Date();
     $('#city').html(current.display_location.full);
     $('#temperature').html(current.temp_c);
     $('#feels-like-temperature').html(current.feelslike_c);
@@ -49,11 +50,20 @@ $(function(){
       $('#temperature').html(current.temp_f);
       $('#feels-like-temperature').html(current.feelslike_f);
       $('#temperature-unit').html('F');
+
+      for(var i = 0; i < threeDay.length; i++){
+        $('#day-' + (i+1) + ' .forecast-unit').html(threeDay[i]["f"]);
+      }
+
       celsius = false;
     } else {
       $('#temperature').html(current.temp_c);
       $('#feels-like-temperature').html(current.feelslike_c);
       $('#temperature-unit').html('C');
+
+      for(var i = 0; i < threeDay.length; i++){
+        $('#day-' + (i+1) + ' .forecast-unit').html(threeDay[i]["c"]);
+      }
       celsius = true;
     }
   })
