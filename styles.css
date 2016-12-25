@@ -31,11 +31,11 @@ h3,h4,p {
 
 .forecast {
   padding-top: 20px;
+  border-right: gray 1px solid;
 }
 
-#day-2 {
-  border-left: gray 1px solid;
-  border-right: gray 1px solid;
+.forecast:last-child {
+  border-style: none;
 }
 
 #center-box {
@@ -109,12 +109,12 @@ p {
 }
 
 @media only screen and (max-width: 40em) {
-  #day-2 {
-    border-left: none;
-    border-right: none;
-    border-top: gray 1px solid;
-    border-bottom: gray 1px solid;
-  }
+
+.forecast {
+  border-left: none;
+  border-right: none;
+  border-bottom: gray 1px solid;
+}
 
   #right-box {
     margin-top: -80px;

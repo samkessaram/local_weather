@@ -5,6 +5,7 @@ $(function(){
   
   function getForecast(url){
     $.getJSON(url, function(response){
+      console.log(response);
       current = response.current_observation;
       inputCurrentData(current);
       checkSunUp(response.moon_phase);
@@ -50,8 +51,8 @@ $(function(){
       $('#feels-like-temperature').html(current.feelslike_f);
       $('#temperature-unit').html('F');
 
-      for(var i = 0; i < threeDay.length; i++){
-        $('#day-' + (i+1) + ' .forecast-unit').html(threeDay[i]["f"]);
+      for(var i = 0; i < sevenDay.length; i++){
+        $('#day-' + i + ' .forecast-unit').html(sevenDay[i]["f"]);
       }
 
       celsius = false;
@@ -60,16 +61,17 @@ $(function(){
       $('#feels-like-temperature').html(current.feelslike_c);
       $('#temperature-unit').html('C');
 
-      for(var i = 0; i < threeDay.length; i++){
-        $('#day-' + (i+1) + ' .forecast-unit').html(threeDay[i]["c"]);
+      for(var i = 0; i < sevenDay.length; i++){
+        $('#day-' + i + ' .forecast-unit').html(sevenDay[i]["c"]);
       }
       celsius = true;
     }
   })
 
   function geoSuccess(pos){
+    console.log(pos);
     console.log(pos.coords.latitude + ', ' + pos.coords.longitude);
-    getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast/conditions/astronomy/q/' + pos.coords.latitude + ',' + pos.coords.longitude + '.json')
+    getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast10day/conditions/astronomy/q/' + pos.coords.latitude + ',' + pos.coords.longitude + '.json')
   }
 
   function geoError(){
@@ -77,7 +79,7 @@ $(function(){
     getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast/conditions/astronomy/q/autoip.json')
   }
 
-  navigator.geolocation.getCurrentPosition(geoSuccess, geoError)
+  navigator.geolocation.getCurrentPosition(geoSuccess, geoError, {enableHighAccuracy: true})
 
   // var localURL = 'https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast/conditions/astronomy/q/autoip.json'
 

@@ -6,20 +6,20 @@ function parseConditions(str){    // This is parsing the conditions from WUnderg
   }                               // two words. Below, any further changes are made. 
 
   if (str.includes('tstorms')){
-    str.replace('tstorms','thunderstorms')
+    str = str.replace('tstorms','thunderstorms')
   }
 
   if (str.includes('chance')){
-    str.replace('chance','chance of')
+    str = str.replace('chance','chance of')
   }
 
   if (str.includes('sleat')){
-    str.replace('sleat','sleet')
+    str = str.replace('sleat','sleet')
   }
 
   return upcase(str);
-}
 
+}
 
 function upcase(str){
   str = str.split('');

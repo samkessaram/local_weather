@@ -1,7 +1,7 @@
-var threeDay = [];
+var sevenDay = [];
 
 function inputForecast(forecast){
-  for (var i = 1; i < forecast.length; i++){
+  for (var i = 0; i < 6; i++){
     var data = forecast[i];
     var day = {
       "day": data.date.weekday,
@@ -11,9 +11,8 @@ function inputForecast(forecast){
       "f": data.high.fahrenheit + '&deg;F',
     };
 
-    threeDay.push(day);
+    sevenDay.push(day);
 
-    $('#day-' + i).html('<p>' + day.day + '</p><p><i class="wi ' + day.icon + '"></i></p><p>'+ day.conditions +'</p><p class="forecast-unit">' + day.c + '</p>');
-
+    $('#7-day').append('<div id="day-' + i + '" class="forecast small-12 large-2 columns"><p>' + day.day + '</p><p><i class="wi ' + day.icon + '"></i></p><p>'+ day.conditions +'</p><p class="forecast-unit">' + day.c + '</p></div>')
   }
 }
