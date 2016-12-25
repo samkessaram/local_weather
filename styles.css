@@ -16,7 +16,8 @@ h3,h4,p {
 }
 
 .callout {
-  background-color: rgba(200,200,200,0.1)
+  background-color: rgba(200,200,200,0.1);
+  /*margin-bottom: -80px;*/
 }
 
 #canvas {
@@ -29,7 +30,7 @@ h3,h4,p {
 }
 
 .forecast {
-  margin: 20px 0px;
+  padding-top: 20px;
 }
 
 #day-2 {
@@ -103,7 +104,7 @@ p {
   color: white;
 }
 
-.row {
+#current .row {
   margin-top: 40px;
 }
 
@@ -113,6 +114,14 @@ p {
     border-right: none;
     border-top: gray 1px solid;
     border-bottom: gray 1px solid;
+  }
+
+  #right-box {
+    margin-top: -80px;
+    margin-bottom: 40px;
+  }
+  #current .row {
+    margin-top: 25px;
   }
 }
 
