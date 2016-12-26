@@ -70,19 +70,14 @@ $(function(){
 
   function geoSuccess(pos){
     console.log(pos);
-    console.log(pos.coords.latitude + ', ' + pos.coords.longitude);
     getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast10day/conditions/astronomy/q/' + pos.coords.latitude + ',' + pos.coords.longitude + '.json')
   }
 
   function geoError(){
     alert('Location based on IP address. Enable geolocation for more accurate results.')
-    getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast/conditions/astronomy/q/autoip.json')
+    getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast10day/conditions/astronomy/q/autoip.json')
   }
 
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError, {enableHighAccuracy: true})
-
-  // var localURL = 'https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast/conditions/astronomy/q/autoip.json'
-
-  // getForecast(localURL);
 
 });
