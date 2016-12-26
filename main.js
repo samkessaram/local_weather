@@ -80,4 +80,14 @@ $(function(){
 
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError, {enableHighAccuracy: true})
 
+  // while (!!$('#wait-msg').html()){
+  //   $('#wait-msg span').html('.'.repeat(num))
+    
+  //   for( var i = 1; i < 4; i++ ){
+  //     if ( i === 3 ){
+  //       i = 0;
+  //     }
+  //   }
+  // }
+
 });
