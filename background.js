@@ -49,7 +49,7 @@ function setBackground(weather,sun){
   })
 
   pattern.canvas(document.getElementById('canvas'));
-  $('body').fadeIn(1000);
+  $('.container').fadeIn(1000);
 }
 
 $(window).on("orientationchange resize",function(){

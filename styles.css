@@ -7,7 +7,7 @@ html,body {
   /*font-weight: 200;*/
 }
 
-body {
+.container {
   display: none;     /* To hide ugliness while Javascript works */
 }
 
@@ -16,8 +16,12 @@ h3,h4,p {
 }
 
 .callout {
-  background-color: rgba(200,200,200,0.1);
-  /*margin-bottom: -80px;*/
+  background-color: rgba(200,200,200,0.5);
+}
+
+#wait-msg {
+  position: relative;
+  top: 200px;
 }
 
 #canvas {

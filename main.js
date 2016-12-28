@@ -4,7 +4,10 @@ $(function(){
   var current;
   
   function getForecast(url){
+    $('#msg').html('Fetching forecast');
+    waitStart = new Date();
     $.getJSON(url, function(response){
+      $('#wait-msg').remove();
       console.log(response);
       current = response.current_observation;
       inputCurrentData(current);
@@ -78,16 +81,37 @@ $(function(){
     getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast10day/conditions/astronomy/q/autoip.json')
   }
 
-  navigator.geolocation.getCurrentPosition(geoSuccess, geoError, {enableHighAccuracy: true})
+  navigator.geolocation.getCurrentPosition(geoSuccess, geoError, {enableHighAccuracy: true});
+  $('#msg').html('Determining location');
 
-  // while (!!$('#wait-msg').html()){
-  //   $('#wait-msg span').html('.'.repeat(num))
+  var dots = 1;
+  var waitStart = new Date();
+  
+  var interval = window.setInterval(function(){
+    if ( dots > 3 ){
+      dots = 1;
+    } else {
+      $('#ellipsis').html('.'.repeat(dots));
+      dots++;
+    }
     
-  //   for( var i = 1; i < 4; i++ ){
-  //     if ( i === 3 ){
-  //       i = 0;
-  //     }
-  //   }
-  // }
+    if (!$('#wait-msg').html()){
+      window.clearInterval(interval);
+    }
+
+    var msg = $('#msg').html()
+
+    if ( Date.now() - waitStart > 2000 ){
+      var errMsg;
+      if ( msg === 'Fetching forecast'){
+        errMsg = 'Weather Underground is taking longer than normal to respond. Hang in there'
+      } else {
+        errMsg = 'Still searching for location'
+      }
+      $('#msg').html(errMsg);
+    }
+  },200);
+
+  
 
 });
