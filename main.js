@@ -101,7 +101,7 @@ $(function(){
 
     var msg = $('#msg').html()
 
-    if ( Date.now() - waitStart > 5000 ){
+    if ( Date.now() - waitStart > 10000 ){
       var errMsg;
       if ( msg === 'Fetching forecast'){
         errMsg = 'Weather Underground is taking longer than normal to respond. Hang in there'
