@@ -12,7 +12,11 @@ function inputForecast(forecast){
     };
 
     if ( i === 0 ){
-      day.day = "Tonight";
+      if ( new Date().getHours() < 12 ){
+        day.day = "Today";
+      } else {
+        day.day = "Tonight";
+      }
     }
 
     sevenDay.push(day);
