@@ -4,10 +4,12 @@ $(function(){
   var current;
   
   function getForecast(url){
+    $('.container, canvas').hide();
+    $('#wait-msg').show();
     $('#msg').html('Fetching forecast');
     waitStart = new Date();
     $.getJSON(url, function(response){
-      $('#wait-msg').remove();
+      $('#wait-msg').hide();
       console.log(response);
       current = response.current_observation;
       inputCurrentData(current);
@@ -83,35 +85,40 @@ $(function(){
 
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError, {enableHighAccuracy: true});
   $('#msg').html('Determining location');
-
-  var dots = 1;
-  var waitStart = new Date();
+  ellipsis();
   
-  var interval = window.setInterval(function(){
-    if ( dots > 3 ){
-      dots = 1;
-    } else {
-      $('#ellipsis').html('.'.repeat(dots));
-      dots++;
-    }
-    
-    if (!$('#wait-msg').html()){
-      window.clearInterval(interval);
-    }
-
-    var msg = $('#msg').html()
-
-    if ( Date.now() - waitStart > 10000 ){
-      var errMsg;
-      if ( msg === 'Fetching forecast'){
-        errMsg = 'Weather Underground is taking longer than normal to respond. Hang in there'
+  function ellipsis(){
+    var dots = 1;
+    var waitStart = new Date();
+    var interval = window.setInterval(function(){
+      if ( dots > 3 ){
+        dots = 1;
       } else {
-        errMsg = 'Still waiting for location'
+        $('#ellipsis').html('.'.repeat(dots));
+        dots++;
       }
-      $('#msg').html(errMsg);
-    }
-  },200);
+      
+      if ($('#wait-msg').css('display') === 'none'){
+        window.clearInterval(interval);
+      }
 
-  
+      var msg = $('#msg').html()
+
+      if ( Date.now() - waitStart > 10000 ){
+        var errMsg;
+        if ( msg === 'Fetching forecast'){
+          errMsg = 'Weather Underground is taking longer than normal to respond. Hang in there'
+        } else {
+          errMsg = 'Still waiting for location'
+        }
+        $('#msg').html(errMsg);
+      }
+    },200);
+  }
+
+  $('#icon').click(function(){
+    getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast10day/conditions/astronomy/q/Bermuda.json');
+    ellipsis();
+  })
 
 });

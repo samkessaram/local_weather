@@ -1,6 +1,7 @@
-var sevenDay = [];
-
+var sevenDay;
 function inputForecast(forecast){
+  sevenDay = [];
+  $('#7-day').children().remove();
   for (var i = 0; i < 6; i++){
     var data = forecast[i];
     var day = {
@@ -20,7 +21,6 @@ function inputForecast(forecast){
     }
 
     sevenDay.push(day);
-
     $('#7-day').append('<div id="day-' + i + '" class="forecast small-12 large-2 columns"><p>' + day.day + '</p><p><i class="wi ' + day.icon + '"></i></p><p>'+ day.conditions +'</p><p class="forecast-unit">' + day.c + '</p></div>')
   }
 }
