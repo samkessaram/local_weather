@@ -8,8 +8,8 @@ function inputForecast(forecast){
       "day": data.date.weekday,
       "conditions": parseConditions(data.icon),
       "icon": chooseIcon(data.icon,true),
-      "c": data.high.celsius + '&deg;C',
-      "f": data.high.fahrenheit + '&deg;F',
+      "c": data.high.celsius + '°C',
+      "f": data.high.fahrenheit + '°F',
     };
 
     if ( i === 0 ){
