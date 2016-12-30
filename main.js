@@ -117,7 +117,7 @@ $(function(){
   }
 
   $('#icon').click(function(){
-    getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast10day/conditions/astronomy/q/Bermuda.json');
+    getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast10day/conditions/astronomy/q/Ontario/Toronto.json');
     ellipsis();
   })
 

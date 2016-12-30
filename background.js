@@ -63,4 +63,5 @@ $(window).on("orientationchange resize",function(){
     });
     pattern.canvas(document.getElementById('canvas'));
   }
+
 });

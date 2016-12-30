@@ -11,6 +11,10 @@ html,body {
   display: none;     /* To hide ugliness while Javascript works */
 }
 
+.container {
+  margin-top: 100px;
+}
+
 h3,h4,p {
   font-weight: 200;
 }
@@ -51,10 +55,6 @@ h3,h4,p {
 #conditions-box {
   display:inline-block;
   text-align:left;
-}
-
-#header {
-
 }
 
 #fahrenheit {
