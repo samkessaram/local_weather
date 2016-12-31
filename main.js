@@ -15,6 +15,7 @@ $(function(){
       inputCurrentData(current);
       checkSunUp(response.moon_phase);
       inputForecast(response.forecast.simpleforecast.forecastday);
+      setContainerMarginTop();
     })
   };
 
