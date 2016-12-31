@@ -21,6 +21,7 @@ h3,h4,p {
 
 .callout {
   background-color: rgba(200,200,200,0.5);
+  margin-top: -40px;
 }
 
 #wait-msg {
