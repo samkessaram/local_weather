@@ -54,10 +54,6 @@ function setBackground(weather,sun){
 
   function setContainerMarginTop(){
     var cont = $('#container');
-    console.log(cont.height() < window.innerHeight)
-    console.log((window.innerHeight - cont.height())/2)
-    console.log('contheight: ' + cont.height() )
-    console.log('innerHeight: ' + window.innerHeight)
     if (cont.height() < window.innerHeight){
       cont.css('margin-top', (window.innerHeight - cont.height())/2)
     }else{
