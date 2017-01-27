@@ -2,6 +2,12 @@ $(function(){
 
   var celsius = true;
   var current;
+
+  function getLocation(){
+    $.getJSON('http://freegeoip.net/json/',function(response){
+      $('#city').html(response.city + ', ' + response.region_name);
+    })
+  }
   
   function getForecast(url){
     $('.container, canvas').hide();
@@ -10,7 +16,6 @@ $(function(){
     waitStart = new Date();
     $.getJSON(url, function(response){
       $('#wait-msg').hide();
-      console.log(response);
       current = response.current_observation;
       inputCurrentData(current);
       checkSunUp(response.moon_phase);
@@ -21,7 +26,6 @@ $(function(){
 
   function  inputCurrentData(){
     var date = new Date();
-    $('#city').html(current.display_location.full);
     $('#temperature').html(current.temp_c);
     $('#feels-like-temperature').html(current.feelslike_c);
     $('#conditions').html(parseConditions(current.icon));
@@ -74,18 +78,11 @@ $(function(){
     }
   })
 
-  function geoSuccess(pos){
-    console.log(pos);
-    getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast10day/conditions/astronomy/q/' + pos.coords.latitude + ',' + pos.coords.longitude + '.json')
-  }
+  getLocation();
+  getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast10day/conditions/astronomy/q/autoip.json');
 
-  function geoError(){
-    alert('Location based on IP address. Enable geolocation for more accurate results.')
-    getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast10day/conditions/astronomy/q/autoip.json')
-  }
-
-  navigator.geolocation.getCurrentPosition(geoSuccess, geoError, {enableHighAccuracy: true});
   $('#msg').html('Determining location');
+
   ellipsis();
   
   function ellipsis(){
@@ -116,10 +113,4 @@ $(function(){
       }
     },200);
   }
-
-  $('#icon').click(function(){
-    getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast10day/conditions/astronomy/q/Ontario/Toronto.json');
-    ellipsis();
-  })
-
 });
