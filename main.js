@@ -1,18 +1,56 @@
 $(function(){
 
+  $('.container, canvas').hide();
+  $('#wait-msg').show();
+  $('#msg').html('Fetching forecast');
+
   var celsius = true;
   var current;
+  var searchTerm;
 
   function getLocation(){
     $.getJSON('http://freegeoip.net/json/',function(response){
-      $('#city').html(response.city + ', ' + response.region_name);
+      searchTerm = response.city + ', ' + response.region_name;
+      $('#city').html(searchTerm);
+    })
+  }
+
+  $('#city').focus(function(e){
+    searchTerm = this.innerHTML;
+    this.innerHTML = ''
+  })
+
+  $('#city').blur(function(e){
+    if ( this.innerText === '' ){
+      this.innerHTML = searchTerm;
+    }
+  })
+
+  $('#city').keydown(function(e){
+    if ( e.key === 'Enter'){
+      e.preventDefault();
+      if ( this.innerText !== searchTerm ){
+        searchTerm = this.innerText;
+        userSearch(searchTerm);
+      }
+      this.blur();
+    }
+  })
+
+  function userSearch(city){
+    $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address=' + city + '&key=AIzaSyBhkGzic5SLMJWPd4DYaRzh1yWBAzkB_b0', function(response){
+      if ( response.status === 'OK' ){
+        searchTerm = response.results[0].formatted_address;
+        $('#city').html(searchTerm);
+        var latLon = response.results[0].geometry.location.lat + ',' + response.results[0].geometry.location.lng;
+        getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast10day/conditions/astronomy/q/' + latLon + '.json');
+      } else {
+        $('#city').html("<span style='color:gray'>No results for</span> " + "'" + searchTerm + "'")
+      }
     })
   }
   
   function getForecast(url){
-    $('.container, canvas').hide();
-    $('#wait-msg').show();
-    $('#msg').html('Fetching forecast');
     waitStart = new Date();
     $.getJSON(url, function(response){
       $('#wait-msg').hide();
