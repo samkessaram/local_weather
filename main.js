@@ -9,7 +9,7 @@ $(function(){
   var searchTerm;
 
   function getLocation(){
-    $.getJSON('http://freegeoip.net/json/',function(response){
+    $.getJSON('https://freegeoip.net/json/',function(response){
       searchTerm = response.city + ', ' + response.region_name;
       $('#city').html(searchTerm);
     })
