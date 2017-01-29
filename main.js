@@ -4,7 +4,7 @@ $(function(){
   $('#wait-msg').show();
   $('#msg').html('Fetching forecast');
 
-  var celsius = true;
+  var displayCelsius = true;
   var current;
   var searchTerm;
 
@@ -58,8 +58,8 @@ $(function(){
       $('#wait-msg').hide();
       current = response.current_observation;
       inputCurrentData(current);
-      checkSunUp(current.local_time_rfc822, response.moon_phase);
-      inputForecast(response.forecast.simpleforecast.forecastday);
+      checkSunUp(response.moon_phase);
+      inputForecast(response.forecast.simpleforecast.forecastday,displayCelsius);
       setContainerMarginTop();
       $('#overlay').hide()
     })
@@ -67,8 +67,13 @@ $(function(){
 
   function  inputCurrentData(){
     var date = new Date();
-    $('#temperature').html(current.temp_c);
-    $('#feels-like-temperature').html(current.feelslike_c);
+    if ($('#city').html() === ''){
+       $('#city').html(current.display_location.city + ', ' + current.display_location.state)
+    }
+    var temp; 
+    displayCelsius ? temp = [current.temp_c,current.feelslike_c] : temp = [current.temp_f,current.feelslike_f]
+    $('#temperature').html(temp[0]);
+    $('#feels-like-temperature').html(temp[1]);
     $('#conditions').html(parseConditions(current.icon));
     $('#wind-speed-kph').html(current.wind_kph);
     $('#wind-gust-kph').html(current.wind_gust_kph);
@@ -78,17 +83,20 @@ $(function(){
     $('#humidity').html(current.relative_humidity);
   }
 
-  function checkSunUp(time, sunTimes){
+  function checkSunUp(sunTimes){
+    var time = new Date();
     var sunrise = new Date();
     var sunset = new Date();
-    var time = new Date(time);
+
+    time.setHours(sunTimes.current_time.hour)
+    time.setMinutes(sunTimes.current_time.minute)
     
     sunrise.setHours(sunTimes.sunrise.hour);
     sunrise.setMinutes(sunTimes.sunrise.minute);
-    
+
     sunset.setHours(sunTimes.sunset.hour);
     sunset.setMinutes(sunTimes.sunset.minute);
-
+    console.log(time,sunrise,sunset)
     var sun = time > sunrise && time < sunset;  // Checking if sun is up or not (true or false) 
                                                       // to determine which icon and background to display.
     setIcon(current.icon, sun);
@@ -97,7 +105,7 @@ $(function(){
 
   $('#temperature-units').click(function changeUnits(){
     $('#celsius, #fahrenheit').toggleClass('alt-temperature');
-    if ( celsius ){
+    if ( displayCelsius ){
       $('#temperature').html(current.temp_f);
       $('#feels-like-temperature').html(current.feelslike_f);
       $('#temperature-unit').html('F');
@@ -106,7 +114,7 @@ $(function(){
         $('#day-' + i + ' .forecast-unit').html(sevenDay[i]["f"]);
       }
 
-      celsius = false;
+      displayCelsius = false;
     } else {
       $('#temperature').html(current.temp_c);
       $('#feels-like-temperature').html(current.feelslike_c);
@@ -115,7 +123,7 @@ $(function(){
       for(var i = 0; i < sevenDay.length; i++){
         $('#day-' + i + ' .forecast-unit').html(sevenDay[i]["c"]);
       }
-      celsius = true;
+      displayCelsius = true;
     }
   })
 

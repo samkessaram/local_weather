@@ -3,7 +3,6 @@ var yColors;
 
 function setBackground(weather,sun){
   if(sun){
-    console.log(sun)
     yColors = ['#ACF0F2','#F3FFE2','#FFFFFF'];
     $('body, #temperature-units, #celsius, #fahrenheit, .callout').removeClass('night-color');
     $('#celsius, #fahrenheit').addClass('day-color');
