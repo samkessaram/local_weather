@@ -8,20 +8,22 @@ $(function(){
   var current;
   var searchTerm;
 
-  function getLocation(){
+  function getCoords(){
     $.ajax({
-    url: "http://ip-api.com/json",
-    jsonp: "callback",
-    dataType: "jsonp",
-    data: {
-        format: "json"
-    },
-    success: function( response ) {
-      searchTerm = response.city + ', ' + response.regionName;
-      $('#city').html(searchTerm);
-    }
+      type: "POST",
+      url: 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCMy8wsGnbua26y4lDHR-kaWZeGVvBUeV4',
+      success: getCityName,
     });
   }
+
+  function getCityName(response){
+    var coords = response.location
+    $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + coords.lat + ',' + coords.lng +'&result_type=locality&key=AIzaSyCMy8wsGnbua26y4lDHR-kaWZeGVvBUeV4', function(response){
+      $('#city').html(response.results[0].formatted_address);
+    })
+  }
+
+  getCoords()
 
   $('#city').focus(function(e){
     searchTerm = this.innerHTML;
@@ -65,7 +67,6 @@ $(function(){
     $.getJSON(url, function(response){
       $('#wait-msg').hide();
       current = response.current_observation;
-      // console.log(response)
       inputCurrentData(current);
       var sun = sunUp(response.moon_phase);
       setIcon(current.icon, sun);
@@ -135,7 +136,7 @@ $(function(){
     }
   })
 
-  getLocation();
+  // getLocation();
   getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast10day/conditions/astronomy/q/autoip.json');
 
   $('#msg').html('Determining location');
