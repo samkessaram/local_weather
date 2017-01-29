@@ -65,5 +65,5 @@
   };
 
 function setIcon(weather,sun){
-  $('#icon').addClass(chooseIcon(weather,sun));
+  $('#icon').removeClass().addClass('wi ' + chooseIcon(weather,sun));
 }
