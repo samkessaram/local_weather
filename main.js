@@ -58,7 +58,9 @@ $(function(){
       $('#wait-msg').hide();
       current = response.current_observation;
       inputCurrentData(current);
-      checkSunUp(response.moon_phase);
+      var sun = sunUp(response.moon_phase);
+      setIcon(current.icon, sun);
+      setBackground(current.icon, sun);
       inputForecast(response.forecast.simpleforecast.forecastday,displayCelsius);
       setContainerMarginTop();
       $('#overlay').hide()
@@ -83,7 +85,7 @@ $(function(){
     $('#humidity').html(current.relative_humidity);
   }
 
-  function checkSunUp(sunTimes){
+  function sunUp(sunTimes){
     var time = new Date();
     var sunrise = new Date();
     var sunset = new Date();
@@ -96,10 +98,9 @@ $(function(){
 
     sunset.setHours(sunTimes.sunset.hour);
     sunset.setMinutes(sunTimes.sunset.minute);
-    var sun = time > sunrise && time < sunset;  // Checking if sun is up or not (true or false) 
-                                                      // to determine which icon and background to display.
-    setIcon(current.icon, sun);
-    setBackground(current.icon, sun);
+    return time > sunrise && time < sunset;  // Checking if sun is up or not (true or false) 
+                                                // to determine which icon and background to display.
+
   };
 
   $('#temperature-units').click(function changeUnits(){
