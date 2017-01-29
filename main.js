@@ -23,8 +23,6 @@ $(function(){
     })
   }
 
-  getCoords()
-
   $('#city').focus(function(e){
     searchTerm = this.innerHTML;
     this.innerHTML = ''
@@ -135,11 +133,11 @@ $(function(){
       displayCelsius = true;
     }
   })
-
-  // getLocation();
+  
+  getCoords()
   getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast10day/conditions/astronomy/q/autoip.json');
 
-  $('#msg').html('Determining location');
+  $('#msg').html('Fetching forecast');
 
   ellipsis();
   
@@ -160,14 +158,8 @@ $(function(){
 
       var msg = $('#msg').html()
 
-      if ( Date.now() - waitStart > 10000 ){
-        var errMsg;
-        if ( msg === 'Fetching forecast'){
-          errMsg = 'Weather Underground is taking longer than normal to respond. Hang in there'
-        } else {
-          errMsg = 'Still waiting for location'
-        }
-        $('#msg').html(errMsg);
+      if ( Date.now() - waitStart > 5000 ){
+        $('#msg').html('Weather Underground is taking longer than normal to respond. Hang in there, or try refreshing the page');
       }
     },200);
   }
