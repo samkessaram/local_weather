@@ -9,10 +9,18 @@ $(function(){
   var searchTerm;
 
   function getLocation(){
-    $.getJSON('https://freegeoip.net/json/',function(response){
-      searchTerm = response.city + ', ' + response.region_name;
+    $.ajax({
+    url: "http://ip-api.com/json",
+    jsonp: "callback",
+    dataType: "jsonp",
+    data: {
+        format: "json"
+    },
+    success: function( response ) {
+      searchTerm = response.city + ', ' + response.regionName;
       $('#city').html(searchTerm);
-    })
+    }
+    });
   }
 
   $('#city').focus(function(e){
@@ -57,6 +65,7 @@ $(function(){
     $.getJSON(url, function(response){
       $('#wait-msg').hide();
       current = response.current_observation;
+      // console.log(response)
       inputCurrentData(current);
       var sun = sunUp(response.moon_phase);
       setIcon(current.icon, sun);
@@ -99,8 +108,7 @@ $(function(){
     sunset.setHours(sunTimes.sunset.hour);
     sunset.setMinutes(sunTimes.sunset.minute);
     return time > sunrise && time < sunset;  // Checking if sun is up or not (true or false) 
-                                                // to determine which icon and background to display.
-
+                                             // to determine which icon and background to display.
   };
 
   $('#temperature-units').click(function changeUnits(){
