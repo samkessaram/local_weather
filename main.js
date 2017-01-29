@@ -64,6 +64,7 @@ $(function(){
     waitStart = new Date();
     $.getJSON(url, function(response){
       $('#wait-msg').hide();
+      console.log(response)
       current = response.current_observation;
       inputCurrentData(current);
       var sun = sunUp(response.moon_phase);
@@ -133,7 +134,7 @@ $(function(){
       displayCelsius = true;
     }
   })
-  
+
   getCoords()
   getForecast('https://api.wunderground.com/api/1f82a733ebea4fe0/geolookup/forecast10day/conditions/astronomy/q/autoip.json');
 
