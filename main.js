@@ -29,7 +29,7 @@ $(function(){
   $('#city').keydown(function(e){
     if ( e.key === 'Enter'){
       e.preventDefault();
-      if ( this.innerText !== searchTerm ){
+      if ( this.innerText !== searchTerm && this.innerText.length > 0 ){
         searchTerm = this.innerText;
         userSearch(searchTerm);
       }
@@ -96,7 +96,7 @@ $(function(){
 
     sunset.setHours(sunTimes.sunset.hour);
     sunset.setMinutes(sunTimes.sunset.minute);
-    console.log(time,sunrise,sunset)
+    console.log(time, sunrise, sunset)
     var sun = time > sunrise && time < sunset;  // Checking if sun is up or not (true or false) 
                                                       // to determine which icon and background to display.
     setIcon(current.icon, sun);
