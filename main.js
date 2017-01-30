@@ -64,14 +64,17 @@ $(function(){
     waitStart = new Date();
     $.getJSON(url, function(response){
       $('#wait-msg').hide();
-      console.log(response)
       current = response.current_observation;
-      inputCurrentData(current);
-      var sun = sunUp(response.moon_phase);
-      setIcon(current.icon, sun);
-      setBackground(current.icon, sun);
-      inputForecast(response.forecast.simpleforecast.forecastday,displayCelsius);
-      setContainerMarginTop();
+      if (!!current){
+        inputCurrentData(current);
+        var sun = sunUp(response.moon_phase);
+        setIcon(current.icon, sun);
+        setBackground(current.icon, sun);
+        inputForecast(response.forecast.simpleforecast.forecastday,displayCelsius);
+        setContainerMarginTop();
+      } else {
+        $('#city').html("No results for: " + "<em>" + searchTerm + "</em>");
+      }
       $('#overlay').hide()
     })
   };
