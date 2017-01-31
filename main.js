@@ -162,8 +162,8 @@ $(function(){
 
       var msg = $('#msg').html()
 
-      if ( Date.now() - waitStart > 5000 ){
-        $('#msg').html('Weather Underground is taking longer than normal to respond. Hang in there, or try refreshing the page');
+      if ( Date.now() - waitStart > 7000 ){
+        $('#msg').html('Still waiting for Weather Underground. Hang in there, or try refreshing the page');
       }
     },200);
   }
