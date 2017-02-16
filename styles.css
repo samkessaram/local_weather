@@ -4,7 +4,6 @@ html,body {
   overflow-x: hidden; 
   padding: 0px;
   width: 100%;
-  /*font-weight: 200;*/
 }
 
 .container, canvas {

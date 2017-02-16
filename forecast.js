@@ -1,22 +1,23 @@
-var sevenDay;
-function inputForecast(forecast,c){
+var sevenDay; // The seven day forecast
+function inputForecast(forecast,c, moonPhase){
   sevenDay = [];
-  $('#7-day').children().remove();
+  $('#7-day').children().remove(); // Clear previous data
   for (var i = 0; i < 6; i++){
     var data = forecast[i];
     var day = {
       "day": data.date.weekday,
       "conditions": parseConditions(data.icon),
-      "icon": chooseIcon(data.icon,true),
+      "icon": chooseIcon(data.icon,true), // Set 'sun' to true, forecast will show day icons
       "c": data.high.celsius + '°C',
       "f": data.high.fahrenheit + '°F',
     };
 
-    if ( i === 0 ){
-      if ( new Date().getHours() < 12 ){
-        day.day = "Today";
+    if ( i === 0 ){ //
+      if ( moonPhase.current_time.hour < 12 ){ // Checking if before or after noon
+        day.day = "Today"; // Changing display date
       } else {
         day.day = "Tonight";
+        day.icon = chooseIcon(data.icon,false) // Set 'sun' to false, changing icon to night
       }
     }
 

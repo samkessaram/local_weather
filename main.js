@@ -1,12 +1,12 @@
 $(function(){
 
+  var displayCelsius = true; // Switch for temperature units
+  var current; // Current weather conditions
+  var searchTerm; // The search term from the user
+
   $('.container, canvas').hide();
   $('#wait-msg').show();
   $('#msg').html('Fetching forecast');
-
-  var displayCelsius = true;
-  var current;
-  var searchTerm;
 
   function getCoords(){
     $.ajax({
@@ -70,7 +70,7 @@ $(function(){
         var sun = sunUp(response.moon_phase);
         setIcon(current.icon, sun);
         setBackground(current.icon, sun);
-        inputForecast(response.forecast.simpleforecast.forecastday,displayCelsius);
+        inputForecast(response.forecast.simpleforecast.forecastday,displayCelsius, response.moon_phase);
         setContainerMarginTop();
       } else {
         $('#city').html("No results for: " + "<em>" + searchTerm + "</em>");
@@ -101,6 +101,8 @@ $(function(){
     var time = new Date();
     var sunrise = new Date();
     var sunset = new Date();
+
+    console.log(sunTimes)
 
     time.setHours(sunTimes.current_time.hour)
     time.setMinutes(sunTimes.current_time.minute)
