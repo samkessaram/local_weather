@@ -1,5 +1,5 @@
-var sevenDay; // The seven day forecast
-function inputForecast(forecast,c, moonPhase){
+var sevenDay; // The seven day forecast, global for temperature unit toggle
+function inputForecast(forecast, c, moonPhase){
   sevenDay = [];
   $('#7-day').children().remove(); // Clear previous data
   for (var i = 0; i < 6; i++){

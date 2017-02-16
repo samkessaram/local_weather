@@ -14,7 +14,7 @@ function parseConditions(str){    // This is parsing the conditions from WUnderg
   }
 
   if (str.includes('sleat')){
-    str = str.replace('sleat','sleet')
+    str = str.replace('sleat','sleet')  // Correct WUnderground spelling
   }
 
   return upcase(str);

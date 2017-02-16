@@ -1,4 +1,4 @@
-var xColors;
+var xColors; // Save colors in case of re-size + re-paint
 var yColors;
 
 function setBackground(weather,sun){
@@ -50,17 +50,17 @@ function setBackground(weather,sun){
   })
 
   pattern.canvas(document.getElementById('canvas'));
-  $('.container, canvas').fadeIn(1000);
+  $('.container, canvas').fadeIn(1000); // Show elements once everything is processed
 }
 
-  function setContainerMarginTop(){
-    var cont = $('#container');
-    if (cont.height() < window.innerHeight){
-      cont.css('margin-top', (window.innerHeight - cont.height())/2)
-    }else{
-      cont.css('margin-top',50)
-    }
+function setContainerMarginTop(){ // Vertical align container in middle of page
+  var cont = $('#container');
+  if (cont.height() < window.innerHeight){
+    cont.css('margin-top', (window.innerHeight - cont.height())/2)
+  }else{
+    cont.css('margin-top',50)
   }
+}
 
 $(window).on("orientationchange resize",function(){
   if ( xColors ){
